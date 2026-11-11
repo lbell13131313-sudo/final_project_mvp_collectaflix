@@ -9,25 +9,30 @@ import CollectionPage from "./pages/CollectionPage";
 import ExplorePage from "./pages/ExplorePage";
 import WantlistPage from "./pages/WantlistPage";
 
+import { WantlistProvider } from './contexts/MediaContext';
+
+
 // will delete
 // import heroImg from './assets/hero.png'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
 
 function App() {
-  //const [count, setCount] = useState(0)
+  const [searchResults, setSearchResults] = useState(null);
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<ExplorePage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/collection" element={<CollectionPage />} />
-        <Route path="/wantlist" element={<WantlistPage />} />
-      </Routes>
-      <Taskbar />
-    </BrowserRouter>
+    <WantlistProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<ExplorePage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/collection" element={<CollectionPage />} />
+          <Route path="/wantlist" element={<WantlistPage />} />
+        </Routes>
+        <Taskbar />
+      </BrowserRouter>
+    </WantlistProvider>
   );
 };
 
