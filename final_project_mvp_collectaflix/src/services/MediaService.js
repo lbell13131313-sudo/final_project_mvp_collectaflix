@@ -17,6 +17,7 @@ export async function getPopularMedia() {
     return data.results; // returns the media data
 };
 
+// gonna have to change
 export async function lookupByUPC(upc) {
     const response = await fetch(`${BASE_URL_UPCMD}/lookup/${upc}`, {
         method: 'GET',
