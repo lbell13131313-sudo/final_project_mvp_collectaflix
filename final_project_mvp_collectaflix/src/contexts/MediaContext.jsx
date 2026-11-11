@@ -34,6 +34,7 @@ export function WantlistProvider({ children }) {
     setWantlist(prev => prev.filter(media => media.id !== mediaId));
   };
 
+  // might also need to change
   const isInWantlist = (mediaId) => {
     return wantlist.some(media => media.id === mediaId);
   };

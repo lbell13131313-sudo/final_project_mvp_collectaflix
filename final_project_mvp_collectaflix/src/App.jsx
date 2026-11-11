@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Header from "./components/Header";
+import MobileHeader from "./components/MobileHeader";
 import Taskbar from "./components/Taskbar";
 import CartPage from "./pages/CartPage";
 import CollectionPage from "./pages/CollectionPage";
@@ -23,17 +24,24 @@ function App() {
   return (
     <WantlistProvider>
       <BrowserRouter>
-        <Header />
+        <div>
+          <Header />
+        </div>
+        <div>
+          <MobileHeader />
+        </div>
         <Routes>
           <Route path="/" element={<ExplorePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/collection" element={<CollectionPage />} />
           <Route path="/wantlist" element={<WantlistPage />} />
         </Routes>
-        <Taskbar />
+        <div>
+          <Taskbar />
+        </div>
       </BrowserRouter>
     </WantlistProvider>
   );
 };
 
-export default App
+export default App;
