@@ -1,4 +1,6 @@
-function MediaGrid() {
+import MediaCard from './MediaCard';
+
+function MediaGrid({ medias }) {
     
 };
 

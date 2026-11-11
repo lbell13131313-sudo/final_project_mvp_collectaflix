@@ -24,10 +24,10 @@ function App() {
   return (
     <WantlistProvider>
       <BrowserRouter>
-        <div>
+        <div className="desktop-only-element">
           <Header />
         </div>
-        <div>
+        <div className="mobile-only-element">
           <MobileHeader />
         </div>
         <Routes>
@@ -36,7 +36,7 @@ function App() {
           <Route path="/collection" element={<CollectionPage />} />
           <Route path="/wantlist" element={<WantlistPage />} />
         </Routes>
-        <div>
+        <div className="mobile-only-element">
           <Taskbar />
         </div>
       </BrowserRouter>

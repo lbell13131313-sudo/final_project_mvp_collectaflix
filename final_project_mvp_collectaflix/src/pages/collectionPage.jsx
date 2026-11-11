@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MediaGrid from '../components/MovieGrid';
+import MediaGrid from '../components/MediaGrid';
 
 const CollectionPage = () => {
     const [inCollection, setInCollection] = useState([]);

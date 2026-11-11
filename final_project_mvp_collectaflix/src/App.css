@@ -1,3 +1,29 @@
+.desktop-only-element {
+  display: none; /* hidden by default */
+}
+
+.mobile-only-element {
+  display: block; /* visible by default */
+}
+
+@media (min-wdith: 768px) {
+  .desktop-only-element {
+    display: block; /* visible at 768px and up */
+  }
+
+  .mobile-only-element {
+    display: none; /* hidden at 768px and up */
+  }
+}
+
+
+
+
+
+
+
+
+/* came with the repository */
 .counter {
   font-size: 16px;
   padding: 5px 10px;
