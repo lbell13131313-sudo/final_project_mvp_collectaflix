@@ -12,6 +12,8 @@ import WantlistPage from "./pages/WantlistPage";
 
 import { WantlistProvider } from './contexts/MediaContext';
 
+import { searchMedia } from './services/MediaService'; 
+
 
 // will delete
 // import heroImg from './assets/hero.png'
@@ -21,17 +23,22 @@ import { WantlistProvider } from './contexts/MediaContext';
 function App() {
   const [searchResults, setSearchResults] = useState(null);
 
+  const handleSearch = async (query) => { // Handler function to query search
+    const results = await searchMedia(query); 
+    setSearchResults(results); 
+  }; 
+
   return (
     <WantlistProvider>
       <BrowserRouter>
         <div className="desktop-only-element">
-          <Header />
+          <Header onSearch={handleSearch} />
         </div>
         <div className="mobile-only-element">
-          <MobileHeader />
+          <MobileHeader onSearch={handleSearch} />
         </div>
         <Routes>
-          <Route path="/" element={<ExplorePage />} />
+          <Route path="/" element={<ExplorePage searchResults={searchResults} />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/collection" element={<CollectionPage />} />
           <Route path="/wantlist" element={<WantlistPage />} />
