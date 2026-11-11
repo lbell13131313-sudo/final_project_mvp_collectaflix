@@ -6,7 +6,7 @@ const BASE_URL_IMDB = import.meta.env.VITE_TMDB_BASE_URL
 
 export async function getPopularMedia() {
     const response = await fetch( // requests the popular api database
-        `${BASE_URL_IMDB}/popular?api_key=${API_KEY_IMDB}`
+        `${BASE_URL_IMDB}/popular?api_key=${API_KEY_IMDB}` // might have to fix
     );
 
     if (!response.ok) {
@@ -36,7 +36,7 @@ export async function lookupByUPC(upc) {
 
 export async function searchMedia(query) {
     const response = await fetch( // requests the search results
-        `${BASE_URL_IMDB}/search?api_key=${API_KEY_IMDB}&query=${query}`
+        `${BASE_URL_IMDB}/search?api_key=${API_KEY_IMDB}&query=${query}` // might have to fix
     );
 
     if (!response.ok) {
