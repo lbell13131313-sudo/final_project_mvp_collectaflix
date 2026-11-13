@@ -17,8 +17,8 @@ function MobileHeader({ onSearch }) {
     };
 
     return (
-        <>
-        </>
+        <Header>
+        </Header>
     );
 };
 
