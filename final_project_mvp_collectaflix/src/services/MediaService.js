@@ -2,7 +2,7 @@
 // const BASE_URL_UPCMD = import.meta.env.VITE_UPCMDB_BASE_URL;
 
 const API_KEY_IMDB = import.meta.env.VITE_TMDB_API_KEY;
-const BASE_URL_IMDB = import.meta.env.VITE_TMDB_BASE_URL
+const BASE_URL_IMDB = import.meta.env.VITE_TMDB_BASE_URL;
 
 export async function getPopularMedia() {
     const response = await fetch( // requests the popular api database

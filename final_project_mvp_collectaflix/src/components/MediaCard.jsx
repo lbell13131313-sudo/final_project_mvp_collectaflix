@@ -48,9 +48,35 @@ function MediaCard({ media }) {
         }
     };
 
+    const poster = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
+
     return (
-        <>
-        </>
+        <div className="media-card">
+            <div className="media-poster">
+                <img 
+                    src={poster}
+                    alt={media.title}
+                />
+            </div>
+            <div className="media-info">
+                <h3 className="media-title">{media.title}</h3>
+                <div className="media-details">
+                    <span className="media-rating">⭐ {media.vote_average}</span>
+                    <span className="media-year">{media.release_date.substring(0, 4)}</span>
+                </div>
+                <button className={`collection-button ${inCollection ? 'collected' : ''}`} onClick={toggleInCollection}>
+                    {inCollection ? '♥ Remove from Collection' : '♡ Add to Collection'}
+                </button>
+                {/* adds and removes media from wantlist context */}
+                <button className={`wantlist-button ${inWantlist ? 'wantlisted' : ''}`} onClick={handleWantlistClick}>
+                    {inWantlist ? '✖ Remove from Wantlist' : '+ Add to Wantlist'}
+                </button>
+
+                <button className={`cart-button ${inCart ? 'added' : ''}`} onClick={handleCartClick}>
+                    {inCart ? '🛒 Remove from Cart' : '+ Add to Cart'}
+                </button>
+            </div>
+        </div>
     );
 };
 
