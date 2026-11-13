@@ -17,6 +17,35 @@ export async function getPopularMedia() {
     return data.results; // returns the media data
 };
 
+// attaches a format and price to every media
+export async function enrichMarketplace(mediaData) {
+    const availableFormats = [
+        { type: '4K UHD', basePrice: 24.99 },
+        { type: 'Blu-ray', basePrice: 14.99 },
+        { type: 'DVD', basePrice: 7.99 },
+        { type: 'VHS', basePrice: 12.50 },
+        { type: 'HD DVD', basePrice: 5.00},
+        { type: 'LaserDisc', basePrice: 50.99}
+    ];
+
+    return mediaData.map((media) => {
+        // Generate 2 to 3 random format listings per media for demonstration
+        const listings = availableFormats
+            .filter(() => Math.random() > 0.3)
+            .map((fmt) => ({
+                format: fmt.type,
+                // Add slight price variation to simulate different sellers
+                lowestPrice: (fmt.basePrice + Math.random() * 5).toFixed(2),
+                forSaleCount: Math.floor(Math.random() * 45) + 1
+            }));
+
+        return {
+            ...media,
+            listings: listings.length ? listings : [{ format: 'DVD', lowestPrice: '9.99', forSaleCount: 3 }]
+        };
+    });
+};
+
 // gonna have to change
 // export async function lookupByUPC(upc) {
     // const response = await fetch(`${BASE_URL_UPCMD}/lookup/${upc}`, {
