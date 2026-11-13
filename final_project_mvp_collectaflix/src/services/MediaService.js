@@ -50,6 +50,19 @@ export async function enrichMarketplace(mediaData = []) {
     });
 };
 
+export async function searchMedia(query) {
+    const response = await fetch( // requests the search results
+        `${BASE_URL_TMDB}/3/search/multi?api_key=${API_KEY_TMDB}&query=${encodeURIComponent(query)}` // might have to fix
+    );
+
+    if (!response.ok) {
+        throw new Error(`Failed to search movies and shows: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.results ?? []; // returns the search results
+};
+
 // gonna have to change
 // export async function lookupByUPC(upc) {
     // const response = await fetch(`${BASE_URL_UPCMD}/lookup/${upc}`, {
@@ -67,16 +80,3 @@ export async function enrichMarketplace(mediaData = []) {
     // const json = await response.json();
     // return json.data; // Returns title, year, format, imdbID, imdbRating, rated, special_features, publisher etc.
 // };
-
-export async function searchMedia(query) {
-    const response = await fetch( // requests the search results
-        `${BASE_URL_TMDB}/3/search/multi?api_key=${API_KEY_TMDB}&query=${encodeURIComponent(query)}` // might have to fix
-    );
-
-    if (!response.ok) {
-        throw new Error(`Failed to search movies and shows: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.results ?? []; // returns the search results
-};
