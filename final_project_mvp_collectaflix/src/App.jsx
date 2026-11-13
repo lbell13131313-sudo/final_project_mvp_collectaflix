@@ -33,20 +33,16 @@ function App() {
     <CartProvider>
       <WantlistProvider>
         <BrowserRouter>
-          <div className="desktop-only-element">
-            <Header onSearch={handleSearch} />
-          </div>
-          <div className="mobile-only-element">
-            <MobileHeader onSearch={handleSearch} />
-          </div>
-          <Routes>
-            <Route path="/" element={<ExplorePage searchResults={searchResults} />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/collection" element={<CollectionPage />} />
-            <Route path="/wantlist" element={<WantlistPage />} />
-          </Routes>
-          <div className="mobile-only-element">
-            <Taskbar />
+          <div className="app">
+            <Header className="desktop-only-element" onSearch={handleSearch} />
+            <MobileHeader className="mobile-only-element" onSearch={handleSearch} />
+            <Routes>
+              <Route path="/" element={<ExplorePage searchResults={searchResults} />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/collection" element={<CollectionPage />} />
+              <Route path="/wantlist" element={<WantlistPage />} />
+            </Routes>
+            <Taskbar className="mobile-only-element" />
           </div>
         </BrowserRouter>
       </WantlistProvider>

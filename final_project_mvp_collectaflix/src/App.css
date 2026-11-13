@@ -1,4 +1,4 @@
-/* css I've created */
+/* app.css */
 .desktop-only-element {
   display: none; /* hidden by default */
 }
@@ -15,6 +15,22 @@
   .mobile-only-element {
     display: none; /* hidden at 768px and up */
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.app {
+  min-height: 100vh;
 }
 
 
