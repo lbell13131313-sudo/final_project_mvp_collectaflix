@@ -6,7 +6,7 @@ const BASE_URL_TMDB = import.meta.env.VITE_TMDB_BASE_URL;
 
 export async function getPopularMedia() {
     const response = await fetch( // requests the popular api database
-        `${BASE_URL_TMDB}/3/trending/all/week?api_key=${API_KEY_TMDB}` // might have to fix
+        `${BASE_URL_TMDB}/3/trending/all/week?api_key=${API_KEY_TMDB}`
     );
 
     if (!response.ok) {
@@ -14,7 +14,7 @@ export async function getPopularMedia() {
     }
 
     const data = await response.json();
-    return data.results ?? []; // returns the media data
+    return (data.results ?? []).filter((item) => item.media_type !== 'person'); // returns the media data, while filtering out any person items
 };
 
 // attaches a format and price to every media
@@ -51,8 +51,13 @@ export function enrichMarketplace(mediaData = []) {
 };
 
 export async function searchMedia(query) {
+    // Prevent unnecessary API calls on empty searches
+    if (!query || !query.trim()) {
+        return [];
+    }
+
     const response = await fetch( // requests the search results
-        `${BASE_URL_TMDB}/3/search/multi?api_key=${API_KEY_TMDB}&query=${encodeURIComponent(query)}` // might have to fix
+        `${BASE_URL_TMDB}/3/search/multi?api_key=${API_KEY_TMDB}&query=${encodeURIComponent(query)}`
     );
 
     if (!response.ok) {
@@ -60,7 +65,7 @@ export async function searchMedia(query) {
     }
 
     const data = await response.json();
-    return data.results ?? []; // returns the search results
+    return (data.results ?? []).filter((item) => item.media_type !== 'person'); // returns the search results, while filtering out any person items
 };
 
 // gonna have to change
