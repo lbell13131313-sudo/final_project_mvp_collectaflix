@@ -8,7 +8,7 @@ function CartPage() {
         <main className="main-content">
             <div className="content-header">
                 <h2>My Cart</h2>
-                <p>Movies or shows you ware purchasing</p>
+                <p>Movies or shows you are purchasing</p>
                 {/* passes the cart as a prop */}
             </div>
             {cart.length > 0 ? (
