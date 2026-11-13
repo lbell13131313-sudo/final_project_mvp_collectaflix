@@ -1,6 +1,5 @@
 import MediaGrid from '../components/MediaGrid';
 import { useWantlist } from '../contexts/WantlistContext';
-import MediaGrid from '../components/MediaGrid';
 
 function WantlistPage() {
     const { wantlist } = useWantlist();
