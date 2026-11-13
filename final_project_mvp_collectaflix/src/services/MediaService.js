@@ -18,7 +18,7 @@ export async function getPopularMedia() {
 };
 
 // attaches a format and price to every media
-export async function enrichMarketplace(mediaData = []) {
+export function enrichMarketplace(mediaData = []) {
     if (!Array.isArray(mediaData)) {
         return [];
     }
