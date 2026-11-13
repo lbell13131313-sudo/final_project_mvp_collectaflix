@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useWantlist } from '../contexts/MediaContext';
+import { useWantlist } from '../contexts/WantlistContext';
 
 function MediaCard({ media }) {
     const { addToWantlist, removeFromWantlist, isInWantlist } = useWantlist();

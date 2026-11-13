@@ -10,7 +10,7 @@ import CollectionPage from "./pages/CollectionPage";
 import ExplorePage from "./pages/ExplorePage";
 import WantlistPage from "./pages/WantlistPage";
 
-import { WantlistProvider } from './contexts/MediaContext';
+import { WantlistProvider } from './contexts/WantlistContext';
 
 import { searchMedia } from './services/MediaService'; 
 

@@ -28,7 +28,9 @@ function ExplorePage({ searchResults }) {
         fetchMedia(); // immediately call fetchMedia so the media array has data
     }, []);
 
-    const displayMedia = searchResults || media; // if searchResults doesn't have a value then it will display the popular media instead
+    const enrichedSearch = enrichMarketplace(searchResults.items.slice(0, 20));
+
+    const displayMedia = enrichedSearch || media; // if searchResults doesn't have a value then it will display the popular media instead
 
     // if loading is set to true it will load this return
     if (loading) {
