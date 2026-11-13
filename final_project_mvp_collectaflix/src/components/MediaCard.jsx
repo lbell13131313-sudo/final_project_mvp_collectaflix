@@ -67,6 +67,7 @@ function MediaCard({ media }) {
                 <button className={`collection-button ${inCollection ? 'collected' : ''}`} onClick={toggleInCollection}>
                     {inCollection ? '♥ Remove from Collection' : '♡ Add to Collection'}
                 </button>
+                
                 {/* adds and removes media from wantlist context */}
                 <button className={`wantlist-button ${inWantlist ? 'wantlisted' : ''}`} onClick={handleWantlistClick}>
                     {inWantlist ? '✖ Remove from Wantlist' : '+ Add to Wantlist'}

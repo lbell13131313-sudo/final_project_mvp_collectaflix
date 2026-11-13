@@ -51,8 +51,13 @@ function ExplorePage({ searchResults }) {
     }
 
     return (
-        <>
-        </>
+        <main className="main-content">
+            <div className="content-header">
+                <h2>{searchResults ? 'Search Results' : 'Popular Media'}</h2>
+                <p>Buy and collect your favorite movies and shows</p>
+            </div>
+            <MediaGrid medias={displayMedia} />
+        </main>
     );
 };
 

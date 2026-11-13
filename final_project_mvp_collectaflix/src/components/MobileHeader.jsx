@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function MobileHeader({ onSearch }) {
@@ -17,7 +16,22 @@ function MobileHeader({ onSearch }) {
     };
 
     return (
-        <Header>
+        <Header className="header">
+            <div className="header-content">
+                <div className="search-container">
+                    <input 
+                        type="text" 
+                        placeholder="Search movies and shows..."
+                        className="search-input"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <button className="search-button" onClick={handleSearch}>
+                        Search
+                    </button>
+                </div>
+            </div>
         </Header>
     );
 };

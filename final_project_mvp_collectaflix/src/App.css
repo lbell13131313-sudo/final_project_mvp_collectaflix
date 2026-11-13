@@ -33,6 +33,29 @@ body {
   min-height: 100vh;
 }
 
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.content-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.content-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.content-header p {
+  font-size: 1.1rem;
+  color: #cccccc;
+}
+
 /* Header Styles */
 .header {
   background-color: #1e1e1e;
