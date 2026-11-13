@@ -17,13 +17,29 @@ function Header({ onSearch }) {
     };
 
     return (
-        <Header>
-            <nav>
-                <Link to="/" className="nav-link">Explore</Link>
-                <Link to="/collection" className="nav-link">Collection</Link>
-                <Link to="/wantlist" className="nav-link">Wantlist</Link>
-                <Link to="/cart" className="nav-link">Cart</Link>
-            </nav>
+        <Header className="header">
+            <div className="header-content">
+                <nav className="nav-links">
+                    <Link to="/" className="nav-link">Explore</Link>
+                    <Link to="/collection" className="nav-link">Collection</Link>
+                    <Link to="/wantlist" className="nav-link">Wantlist</Link>
+                    <Link to="/cart" className="nav-link">Cart</Link>
+                </nav>
+
+                <div className="search-container">
+                    <input 
+                        type="text" 
+                        placeholder="Search movies and shows..."
+                        className="search-input"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <button className="search-button" onClick={handleSearch}>
+                        Search
+                    </button>
+                </div>
+            </div>
         </Header>
     );
 };
