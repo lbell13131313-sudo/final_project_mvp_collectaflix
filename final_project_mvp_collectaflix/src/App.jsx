@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import MobileHeader from './components/MobileHeader';
 import Taskbar from './components/Taskbar';
+
 import CartPage from './pages/CartPage';
 import CollectionPage from './pages/CollectionPage';
 import ExplorePage from './pages/ExplorePage';

@@ -1,12 +1,12 @@
 // const API_KEY_UPCMDB = import.meta.env.VITE_UPCMDB_API_KEY; // connects to .env
 // const BASE_URL_UPCMD = import.meta.env.VITE_UPCMDB_BASE_URL;
 
-const API_KEY_IMDB = import.meta.env.VITE_TMDB_API_KEY;
-const BASE_URL_IMDB = import.meta.env.VITE_TMDB_BASE_URL;
+const API_KEY_TMDB = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL_TMDB = import.meta.env.VITE_TMDB_BASE_URL;
 
 export async function getPopularMedia() {
     const response = await fetch( // requests the popular api database
-        `${BASE_URL_IMDB}/popular?api_key=${API_KEY_IMDB}` // might have to fix
+        `${BASE_URL_TMDB}/3/trending/all/week?api_key=${API_KEY_TMDB}` // might have to fix
     );
 
     if (!response.ok) {
@@ -14,7 +14,7 @@ export async function getPopularMedia() {
     }
 
     const data = await response.json();
-    return data.results; // returns the media data
+    return data.results ?? []; // returns the media data
 };
 
 // attaches a format and price to every media
@@ -66,13 +66,13 @@ export async function enrichMarketplace(mediaData) {
 
 export async function searchMedia(query) {
     const response = await fetch( // requests the search results
-        `${BASE_URL_IMDB}/search?api_key=${API_KEY_IMDB}&query=${query}` // might have to fix
+        `${BASE_URL_TMDB}/3/search/multi?api_key=${API_KEY_TMDB}&query=${encodeURIComponent(query)}` // might have to fix
     );
 
     if (!response.ok) {
-        throw new Error('Failed to search movies');
+        throw new Error(`Failed to search movies and shows: ${response.status}`);
     }
 
     const data = await response.json();
-    return data.results; // returns the search results
+    return data.results ?? []; // returns the search results
 };
