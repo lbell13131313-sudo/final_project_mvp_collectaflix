@@ -7,7 +7,7 @@
   display: block; /* visible by default */
 }
 
-@media (min-wdith: 768px) {
+@media (min-width: 768px) {
   .desktop-only-element {
     display: block; /* visible at 768px and up */
   }
