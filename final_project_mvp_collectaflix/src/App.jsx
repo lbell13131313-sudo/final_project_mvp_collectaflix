@@ -11,6 +11,7 @@ import ExplorePage from "./pages/ExplorePage";
 import WantlistPage from "./pages/WantlistPage";
 
 import { WantlistProvider } from './contexts/WantlistContext';
+import { CartProvider } from './contexts/CartContext';
 
 import { searchMedia } from './services/MediaService'; 
 
@@ -29,25 +30,27 @@ function App() {
   }; 
 
   return (
-    <WantlistProvider>
-      <BrowserRouter>
-        <div className="desktop-only-element">
-          <Header onSearch={handleSearch} />
-        </div>
-        <div className="mobile-only-element">
-          <MobileHeader onSearch={handleSearch} />
-        </div>
-        <Routes>
-          <Route path="/" element={<ExplorePage searchResults={searchResults} />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/collection" element={<CollectionPage />} />
-          <Route path="/wantlist" element={<WantlistPage />} />
-        </Routes>
-        <div className="mobile-only-element">
-          <Taskbar />
-        </div>
-      </BrowserRouter>
-    </WantlistProvider>
+    <CartProvider>
+      <WantlistProvider>
+        <BrowserRouter>
+          <div className="desktop-only-element">
+            <Header onSearch={handleSearch} />
+          </div>
+          <div className="mobile-only-element">
+            <MobileHeader onSearch={handleSearch} />
+          </div>
+          <Routes>
+            <Route path="/" element={<ExplorePage searchResults={searchResults} />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/collection" element={<CollectionPage />} />
+            <Route path="/wantlist" element={<WantlistPage />} />
+          </Routes>
+          <div className="mobile-only-element">
+            <Taskbar />
+          </div>
+        </BrowserRouter>
+      </WantlistProvider>
+    </CartProvider>
   );
 };
 
