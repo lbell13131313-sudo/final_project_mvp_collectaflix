@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useWantlist } from '../contexts/WantlistContext';
+import { useCart } from '../contexts/CartContext';
 
 function MediaCard({ media }) {
     const { addToWantlist, removeFromWantlist, isInWantlist } = useWantlist();
+    const { addToCart, removeFromCart, isInCart } = useCart();
     const [inCollection, setInCollection] = useState(false);
     // check if the media is already in the wantlist 
     const inWantlist = isInWantlist(media.id);
+
+    // check if media is in the cart
+    const inCart = isInCart(media.id);
 
     useEffect(() => { // uses localstorage to find the media that the user has in their collection
         const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
@@ -32,6 +37,14 @@ function MediaCard({ media }) {
             removeFromWantlist(media.id);
         } else {
             addToWantlist(media);
+        }
+    };
+
+    const handleCartClick = () => { // toggles whether an item is in the cart or not
+        if (inCart) {
+            removeFromCart(media.id);
+        } else {
+            addToCart(media);
         }
     };
 
