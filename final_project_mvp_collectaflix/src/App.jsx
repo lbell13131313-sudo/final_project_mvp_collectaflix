@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Header from "./components/Header";
-import MobileHeader from "./components/MobileHeader";
-import Taskbar from "./components/Taskbar";
-import CartPage from "./pages/CartPage";
-import CollectionPage from "./pages/CollectionPage";
-import ExplorePage from "./pages/ExplorePage";
-import WantlistPage from "./pages/WantlistPage";
+import Header from './components/Header';
+import MobileHeader from './components/MobileHeader';
+import Taskbar from './components/Taskbar';
+import CartPage from './pages/CartPage';
+import CollectionPage from './pages/CollectionPage';
+import ExplorePage from './pages/ExplorePage';
+import WantlistPage from './pages/WantlistPage';
 
 import { WantlistProvider } from './contexts/WantlistContext';
 import { CartProvider } from './contexts/CartContext';
