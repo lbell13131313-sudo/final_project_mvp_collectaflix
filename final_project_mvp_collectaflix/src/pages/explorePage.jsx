@@ -39,7 +39,7 @@ function ExplorePage({ searchResults }) {
                 <LoadingSpinner />
             </main>
         );
-    }
+    };
 
     // if there is an error message, it will load this return
     if (error) {
@@ -48,7 +48,7 @@ function ExplorePage({ searchResults }) {
                 <ErrorMessage message={error} />
             </main>
         );
-    }
+    };
 
     return (
         <main className="main-content">
