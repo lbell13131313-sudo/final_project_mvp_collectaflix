@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 function Taskbar() {
+    // this is a work in progress
     return (
         <Footer>
             <nav>
