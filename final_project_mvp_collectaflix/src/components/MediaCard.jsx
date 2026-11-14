@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useWantlist } from '../contexts/WantlistContext';
 import { useCart } from '../contexts/CartContext';
+import ErrorMessage from './ErrorMessage';
 
 function MediaCard({ media }) {
     const { addToWantlist, removeFromWantlist, isInWantlist } = useWantlist();
     const { addToCart, removeFromCart, isInCart } = useCart();
     const [inCollection, setInCollection] = useState(false);
+    const [error, setError] = useState(null);
     // check if the media is already in the wantlist 
     const inWantlist = isInWantlist(media.id);
 
@@ -19,16 +21,34 @@ function MediaCard({ media }) {
     }, [media.id]);
 
     const toggleInCollection = () => { // uses localstorage to set media as in collection or no longer in collection
-        const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
+        //const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
     
-        if (inCollection) {
-            const updatedCollection = collection.filter(col => col.id !== media.id);
-            localStorage.setItem('inCollection', JSON.stringify(updatedCollection));
-            setInCollection(false);
-        } else {
-            collection.push(media);
-            localStorage.setItem('inCollection', JSON.stringify(collection));
-            setInCollection(true);
+        //if (inCollection) {
+            //const updatedCollection = collection.filter(col => col.id !== media.id);
+            //localStorage.setItem('inCollection', JSON.stringify(updatedCollection));
+            //setInCollection(false);
+        //} else {
+            //collection.push(media);
+            //localStorage.setItem('inCollection', JSON.stringify(collection));
+            //setInCollection(true);
+        //}
+
+        try {
+            const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
+      
+            if (inCollection) {
+                const updatedCollection = collection.filter((col) => col.id !== media.id);
+                localStorage.setItem('inCollection', JSON.stringify(updatedCollection));
+                setInCollection(false);
+            } else {
+                // Prevent duplicates just in case
+                const exists = collection.some((col) => col.id === media.id);
+                const updatedCollection = exists ? collection : [...collection, media];
+                localStorage.setItem('inCollection', JSON.stringify(updatedCollection));
+                setInCollection(true);
+            }
+        } catch (err) {
+            setError('Failed to update collection in localStorage.');
         }
     };
 
@@ -49,6 +69,15 @@ function MediaCard({ media }) {
     };
 
     const poster = `https://image.tmdb.org/t/p/w500${media.poster_path}`;
+
+    // if there is an error message, it will load this return
+    if (error) {
+        return (
+            <main className="main-content">
+                <ErrorMessage message={error} />
+            </main>
+        );
+    };
 
     return (
         <div className="media-card">
