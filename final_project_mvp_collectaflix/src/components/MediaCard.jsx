@@ -72,11 +72,11 @@ function MediaCard({ media }) {
             <div className="media-poster">
                 <img 
                     src={poster}
-                    alt={media.title}
+                    alt={media.title || media.name}
                 />
             </div>
             <div className="media-info">
-                <h3 className="media-title">{media.title}</h3>
+                <h3 className="media-title">{media.title || media.name}</h3>
                 <div className="media-details">
                     <span className="media-rating">⭐ {media.vote_average}</span>
                     <span className="media-year">{media.release_date.substring(0, 4)}</span>
