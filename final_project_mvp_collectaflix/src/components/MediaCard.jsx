@@ -80,13 +80,13 @@ function MediaCard({ media }) {
                 <div className="media-details">
                     <span className="media-rating">⭐ {media.vote_average}</span>
                     <span className="media-year">{media.release_date?.substring(0, 4) || media.first_air_date?.substring(0, 4) || 'N/A'}</span>
-                    <ul>
-                        {media.listings.map((listing) => (
-                            <li key={listing.format}>
-                                <strong>{listing.format}</strong> — From ${listing.lowestPrice} ({listing.forSaleCount} available)
-                            </li>
-                        ))}
-                    </ul>
+                    <p>Format:
+                        <strong>{media.listing.format}</strong>
+                    </p>
+                    <p>Price:
+                        <strong>${media.listing.lowestPrice}</strong>
+                    </p>
+                    <p>Available Copies: {media.listing.forSaleCount}</p>
                 </div>
                 <button className={`collection-button ${inCollection ? 'collected' : ''}`} onClick={toggleInCollection}>
                     {inCollection ? '♥ Remove from Collection' : '♡ Add to Collection'}
