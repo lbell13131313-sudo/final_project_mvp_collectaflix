@@ -5,7 +5,7 @@ function CartPage() {
     const { cart } = useCart();
 
     const cartTotal = () => {
-        const total = cart.reduce((sum, listing) => sum + listing.lowestPrice, 0);
+        const total = cart.listing.reduce((sum, lowestPrice) => sum + lowestPrice, 0);
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',

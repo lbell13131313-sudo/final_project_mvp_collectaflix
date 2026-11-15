@@ -41,7 +41,7 @@ export function enrichMarketplace(mediaData = []) {
         const singleListing = {
             format: randomFormat.type,
             lowestPrice: (randomFormat.basePrice + Math.random() * 5).toFixed(2),
-            forSaleCount: Math.floor(Math.random() * 2) + 1
+            forSaleCount: Math.floor(Math.random() * 5) + 1
         };
 
         return {
