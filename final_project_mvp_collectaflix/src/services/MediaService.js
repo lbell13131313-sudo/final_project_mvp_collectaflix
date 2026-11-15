@@ -1,10 +1,10 @@
-const VITE_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const VITE_BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 export async function getPopularMedia() {
     // requests the popular api database
     const response = await fetch(
-        `${VITE_BASE_URL}/3/trending/all/week?api_key=${VITE_API_KEY}`
+        `${BASE_URL}/3/trending/all/week?api_key=${API_KEY}`
     );
 
     if (!response.ok) {
@@ -56,7 +56,7 @@ export async function searchMedia(query) {
 
     // requests the search results
     const response = await fetch(
-        `${VITE_BASE_URL}/3/search/multi?api_key=${VITE_API_KEY}&query=${encodeURIComponent(query)}`
+        `${BASE_URL}/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
     );
 
     if (!response.ok) {
