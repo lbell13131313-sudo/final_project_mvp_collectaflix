@@ -22,10 +22,6 @@ export async function getPopularMedia() {
 
 // attaches a format and price to every media
 export function enrichMarketplace(mediaData = []) {
-    if (!Array.isArray(mediaData)) {
-        return [];
-    }
-    
     const availableFormats = [
         { type: '4K UHD', basePrice: 24.99 },
         { type: 'Blu-ray', basePrice: 14.99 },
