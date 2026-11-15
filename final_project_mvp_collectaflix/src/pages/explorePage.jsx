@@ -15,7 +15,7 @@ function ExplorePage({ searchResults }) {
                 setLoading(true);
                 setError(null);
                 const mediaData = await getPopularMedia();
-                const enrichedMedia = enrichMarketplace(mediaData.slice(0, 20));
+                const enrichedMedia = enrichMarketplace(mediaData);
                 setMedia(enrichedMedia);
             } catch (err) { // error message so if the popular media don't load it sets media to empty
                 setError('Failed to load media or enrich media. Please try again later.');
@@ -28,7 +28,7 @@ function ExplorePage({ searchResults }) {
         fetchMedia(); // immediately call fetchMedia so the media array has data
     }, []);
 
-    const enrichedSearch = enrichMarketplace(searchResults.slice(0, 20));
+    const enrichedSearch = enrichMarketplace(searchResults);
 
     const displayMedia = enrichedSearch || media; // if searchResults doesn't have a value then it will display the popular media instead
 
