@@ -32,7 +32,7 @@ function CartPage() {
             {cart.length > 0 ? (
                 <>
                     <MediaGrid medias={cart} />
-                    <p> Total: {cartTotal()}</p>
+                    <h1> Total: {cartTotal()}</h1>
                 </>
             ) : (
                 <div className="empty-state">
