@@ -4,6 +4,14 @@ import MediaGrid from '../components/MediaGrid';
 function CartPage() {
     const { cart } = useCart();
 
+    const cartTotal = () => {
+        const total = cart.reduce((sum, listing) => sum + listing.lowestPrice, 0);
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        }).format(total);
+    };
+
     return (
         <main className="main-content">
             <div className="content-header">
@@ -12,7 +20,10 @@ function CartPage() {
                 {/* passes the cart as a prop */}
             </div>
             {cart.length > 0 ? (
-                <MediaGrid medias={cart} />
+                <>
+                    <MediaGrid medias={cart} />
+                    <p> Total: {cartTotal()}</p>
+                </>
             ) : (
                 <div className="empty-state">
                     <p>You cart is empty. Add movies and shows from the explore page to get started!</p>
