@@ -83,9 +83,7 @@ function MediaCard({ media }) {
                 </div>
                 {/* change */}
                 <div className="media-details">
-                    <p>
-                        <strong>Format: {media.listing.format}</strong>
-                    </p>
+                    <strong>Format: {media.listing.format}</strong>
                     <p>
                         <strong>Price: ${media.listing.lowestPrice}</strong>
                     </p>
