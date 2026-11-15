@@ -80,7 +80,7 @@ function MediaCard({ media }) {
                 <div className="media-details">
                     <span className="media-rating">⭐ {media.vote_average}</span>
                     <span className="media-year">{media.release_date?.substring(0, 4) || media.first_air_date?.substring(0, 4) || 'N/A'}</span>
-                    <span>{media.format}</span>
+                    <span>{media.listings}</span>
                 </div>
                 <button className={`collection-button ${inCollection ? 'collected' : ''}`} onClick={toggleInCollection}>
                     {inCollection ? '♥ Remove from Collection' : '♡ Add to Collection'}
