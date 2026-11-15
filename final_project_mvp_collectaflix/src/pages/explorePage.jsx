@@ -18,6 +18,7 @@ function ExplorePage({ searchResults }) {
                 const enrichedMedia = enrichMarketplace(mediaData);
                 setMedia(enrichedMedia);
             } catch (err) { // error message so if the popular media don't load it sets media to empty
+                console.error("Exact error in fetchMedia:", err);
                 setError('Failed to load media or enrich media. Please try again later.');
                 setMedia([]); // Set to empty array to prevent map errors
             } finally {
