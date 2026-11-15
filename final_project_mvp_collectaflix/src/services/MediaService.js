@@ -4,7 +4,7 @@ const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 export async function getPopularMedia() {
     // requests the popular api database
     const response = await fetch(
-        `${BASE_URL}/3/trending/all/week?api_key=${API_KEY}`
+        `${BASE_URL}/trending/all/week?api_key=${API_KEY}`
     );
 
     if (!response.ok) {
