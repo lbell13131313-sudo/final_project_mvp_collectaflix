@@ -83,7 +83,7 @@ function MediaCard({ media }) {
                 </div>
                 <div className="media-details">
                     <strong>Format: {media.listing.format}</strong>
-                    <strong>Price: ${media.listing.lowestPrice}</strong>
+                    <strong>Price: ${media.listing.lowestPrice.toFixed(2)}</strong>
                     <strong>Available Copies: {media.listing.forSaleCount}</strong>
                 </div>
                 <button className={`collection-button ${inCollection ? 'collected' : ''}`} onClick={toggleInCollection}>
