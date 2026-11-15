@@ -9,9 +9,10 @@ function CartPage() {
     const cartTotal = () => {
         //const total = cart.reduce((sum, listing) => sum + listing.lowestPrice, 0);
 
-        const total = (cart || []).reduce((sum, listing) => {
-            // Strip currency symbols/commas if it's a string, then convert to a number
-            const cleanPrice = Number(String(listing?.lowestPrice ?? 0).replace(/[^0-9.-]+/g, ''));
+         const total = (cart || []).reduce((sum, item) => {
+            const rawPrice = item?.listing?.lowestPrice ?? 0;
+            const cleanPrice = Number(String(rawPrice).replace(/[^0-9.-]+/g, ''));
+
             return sum + (isNaN(cleanPrice) ? 0 : cleanPrice);
         }, 0);
 
