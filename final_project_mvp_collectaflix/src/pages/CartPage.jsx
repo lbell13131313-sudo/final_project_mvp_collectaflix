@@ -4,6 +4,8 @@ import MediaGrid from '../components/MediaGrid';
 function CartPage() {
     const { cart } = useCart();
 
+    console.log('Cart contents:', cart);
+
     const cartTotal = () => {
         //const total = cart.reduce((sum, listing) => sum + listing.lowestPrice, 0);
 
