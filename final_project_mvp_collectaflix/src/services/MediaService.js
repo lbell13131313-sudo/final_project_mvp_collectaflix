@@ -36,17 +36,6 @@ export function enrichMarketplace(mediaData = []) {
     ];
 
     const enriched = mediaData.map((media) => {
-        // Combine media_type and id to ensure a unique key (e.g., "movie_550")
-        const cacheKey = `${media.media_type || 'item'}_${media.id}`;
-
-        // If this media already has a saved listing, reuse it
-        if (savedListings[cacheKey]) {
-            return {
-                ...media,
-                listing: savedListings[cacheKey]
-            };
-        }
-
         const randomFormat = availableFormats[Math.floor(Math.random() * availableFormats.length)];
 
         const singleListing = {
@@ -54,10 +43,6 @@ export function enrichMarketplace(mediaData = []) {
             lowestPrice: (randomFormat.basePrice + Math.random() * 5).toFixed(2),
             forSaleCount: Math.floor(Math.random() * 45) + 1
         };
-
-        // Save to our cache object
-        savedListings[cacheKey] = singleListing;
-        hasNewEntries = true;
 
         return {
             ...media,
