@@ -11,6 +11,11 @@ export async function getPopularMedia() {
         throw new Error(`TMDB Error: ${response.status}`);
     }
 
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+        throw new Error(`Expected JSON, got ${contentType}. Check your BASE_URL.`);
+    }
+
     const data = await response.json();
     return (data.results ?? []).filter((item) => item.media_type !== 'person'); // returns the media data, while filtering out any person items
 };
