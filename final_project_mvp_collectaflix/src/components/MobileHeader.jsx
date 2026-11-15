@@ -16,7 +16,7 @@ function MobileHeader({ onSearch }) {
     };
 
     return (
-        <Header className="header">
+        <header className="header">
             <div className="header-content">
                 <div className="search-container">
                     <input 
@@ -32,7 +32,7 @@ function MobileHeader({ onSearch }) {
                     </button>
                 </div>
             </div>
-        </Header>
+        </header>
     );
 };
 

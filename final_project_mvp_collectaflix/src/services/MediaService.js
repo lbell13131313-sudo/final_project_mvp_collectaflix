@@ -1,6 +1,3 @@
-// const API_KEY_UPCMDB = import.meta.env.VITE_UPCMDB_API_KEY; // connects to .env
-// const BASE_URL_UPCMD = import.meta.env.VITE_UPCMDB_BASE_URL;
-
 const API_KEY_TMDB = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL_TMDB = import.meta.env.VITE_TMDB_BASE_URL;
 
@@ -69,21 +66,3 @@ export async function searchMedia(query) {
     const data = await response.json();
     return (data.results ?? []).filter((item) => item.media_type !== 'person'); // returns the search results, while filtering out any person items
 };
-
-// gonna have to change
-// export async function lookupByUPC(upc) {
-    // const response = await fetch(`${BASE_URL_UPCMD}/lookup/${upc}`, {
-        // method: 'GET',
-        // headers: {
-            // 'x-api-key': API_KEY_UPCMDB,
-            // 'Accept': 'application/json',
-        // },
-    // });
-
-    // if (!response.ok) {
-        // throw new Error(`UPCMDB Error: ${response.status}`);
-    // }
-
-    // const json = await response.json();
-    // return json.data; // Returns title, year, format, imdbID, imdbRating, rated, special_features, publisher etc.
-// };

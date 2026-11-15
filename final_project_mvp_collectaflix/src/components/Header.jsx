@@ -17,7 +17,7 @@ function Header({ onSearch }) {
     };
 
     return (
-        <Header className="header">
+        <header className="header">
             <div className="header-content">
                 <nav className="nav-links">
                     <Link to="/" className="nav-link">Explore</Link>
@@ -40,7 +40,7 @@ function Header({ onSearch }) {
                     </button>
                 </div>
             </div>
-        </Header>
+        </header>
     );
 };
 

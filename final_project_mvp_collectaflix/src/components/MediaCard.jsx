@@ -21,18 +21,6 @@ function MediaCard({ media }) {
     }, [media.id]);
 
     const toggleInCollection = () => { // uses localstorage to set media as in collection or no longer in collection
-        //const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
-    
-        //if (inCollection) {
-            //const updatedCollection = collection.filter(col => col.id !== media.id);
-            //localStorage.setItem('inCollection', JSON.stringify(updatedCollection));
-            //setInCollection(false);
-        //} else {
-            //collection.push(media);
-            //localStorage.setItem('inCollection', JSON.stringify(collection));
-            //setInCollection(true);
-        //}
-
         try {
             const collection = JSON.parse(localStorage.getItem('inCollection')) || [];
       

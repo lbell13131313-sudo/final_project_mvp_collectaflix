@@ -16,19 +16,31 @@ import { CartProvider } from './contexts/CartContext';
 
 import { searchMedia } from './services/MediaService'; 
 
-
-// will delete
-// import heroImg from './assets/hero.png'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSearch = async (query) => { // Handler function to query search
-    const results = await searchMedia(query); 
-    setSearchResults(results); 
+    setError(null);
+
+    try {
+      const results = await searchMedia(query);
+      setSearchResults(results);
+    } catch (err) {
+      setError("Failed to fetch search results. Please try again.");
+      setSearchResults(null); // resets the results on failure
+    }
   }; 
+
+  if (error) {
+    return (
+      <main className="main-content">
+        <ErrorMessage message={error} />
+      </main>
+    );
+  };
 
   return (
     <CartProvider>
