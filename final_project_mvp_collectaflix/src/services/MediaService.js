@@ -61,7 +61,7 @@ export async function searchMedia(query) {
 
     // requests the search results
     const response = await fetch(
-        `${BASE_URL}/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
+        `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
     );
 
     if (!response.ok) {
