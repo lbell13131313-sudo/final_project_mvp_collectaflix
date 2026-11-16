@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import MediaCard from './MediaCard';
-import { useWantlist } from '../contexts/WantlistContext';
-import { useCart } from '../contexts/CartContext';
+import MediaCard from '../MediaCard';
+import { useWantlist } from '../../contexts/WantlistContext';
+import { useCart } from '../../contexts/CartContext';
 
 // mocks the context modules
-vi.mock('../contexts/WantlistContext', () => ({
+vi.mock('../../contexts/WantlistContext', () => ({
   useWantlist: vi.fn(),
 }));
 
-vi.mock('../contexts/CartContext', () => ({
+vi.mock('../../contexts/CartContext', () => ({
   useCart: vi.fn(),
 }));
 
@@ -64,7 +64,7 @@ describe('MediaCard', () => {
     expect(screen.getByRole('heading', { name: 'Inception' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Inception' })).toHaveAttribute(
       'src',
-      'https://tmdb.org'
+      'https://image.tmdb.org/t/p/w500/inception.jpg'
     );
     expect(screen.getByText('⭐ 8.8')).toBeInTheDocument();
     expect(screen.getByText('2010')).toBeInTheDocument();
