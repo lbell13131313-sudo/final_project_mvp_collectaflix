@@ -9,6 +9,8 @@ Setup guide:
 
 This project is based on Discogs but is meant to be a physical media of movies and tv shows.
 
+I'm using teh TMDB api for the app.
+
 If the website is in mobile mode, there will only be a search bar up top and a task bar at the bottom. If the website is in website mode, there all the navigation and search will be at the top.
 
 There are 4 different pages the user can explore.
